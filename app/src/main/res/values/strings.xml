@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MyBatikFinder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="photo">Photo</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="upload">Upload</string>
+    <string name="find">Find</string>
+    <string name="name_app">MyBatikFinder</string>
+    <string name="name_batik">Name Batik</string>
+    <string name="detail_batik">Detail Batik</string>
+    <string name="description_app">MyBatikFinder is an innovative application designed specifically for batik enthusiasts and lovers of Indonesian culture. This application makes it easy for users to quickly and accurately find and identify batik motifs. Equipped with the latest image detection technology, MyBatikFinder allows you to take pictures of batik and automatically recognize and provide detailed information about the motif. MyBatikFinder is a loyal companion for those who want to explore and delve into the richness of Indonesian cultural heritage through the art of batik.</string>
+    <string name="save">Save</string>
+    <string name="title_signup_page">Complete your data below!</string>
+    <string name="title_login_page">Want to look for batik motifs?</string>
+    <string name="message_login_page">Enter your data first!</string>
+    <string name="no_account">Don’t have account? Register</string>
+    <string name="have_account">Already have an account? Login</string>
+    <string name="greeting">Halo %1$s,</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">Register</string>
+</resources>
