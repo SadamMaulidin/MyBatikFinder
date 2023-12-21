@@ -24,4 +24,12 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="signup">Register</string>
+    <string name="input_name">Masukkan Nama</string>
+    <string name="input_email">Masukkan Email</string>
+    <string name="input_password">Masukkan Password</string>
+    <string name="validate_register_success">Pendaftaran Berhasil</string>
+    <string name="validate_register_failed">Pendaftaran Gagal</string>
+    <string name="validate_login_success">Login Berhasil</string>
+    <string name="label_invalid_email">Email yang anda masukkan salah</string>
+    <string name="login_user_not_found">User tidak ditemukan</string>
 </resources>

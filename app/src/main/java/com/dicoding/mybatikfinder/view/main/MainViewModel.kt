@@ -4,19 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.dicoding.mybatikfinder.data.pref.UserModel
-import com.dicoding.mybatikfinder.data.pref.UserRepository
+import com.dicoding.mybatikfinder.data.pref.UserPreference
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: UserRepository) : ViewModel() {
-    fun getSession(): LiveData<UserModel> {
-        return repository.getSession().asLiveData()
+class MainViewModel(private val pref: UserPreference) : ViewModel() {
+    fun getToken(): LiveData<String> {
+        return pref.getToken().asLiveData()
     }
 
-    fun logout() {
-        viewModelScope.launch {
-            repository.logout()
-        }
-    }
 
 }

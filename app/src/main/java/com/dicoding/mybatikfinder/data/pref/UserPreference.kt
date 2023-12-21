@@ -7,34 +7,39 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.dicoding.mybatikfinder.data.SignInResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "session")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore("session")
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
-    suspend fun saveSession(user: UserModel) {
+    fun getToken(): Flow<String> = dataStore.data.map { it[TOKEN_KEY] ?: "Tidak diatur" }
+
+    suspend fun saveUser(userName: String, userId: String, userToken: String) {
         dataStore.edit { preferences ->
-            preferences[EMAIL_KEY] = user.email
-            preferences[TOKEN_KEY] = user.token
-            preferences[IS_LOGIN_KEY] = true
+            preferences[NAME_KEY] = userName
+            preferences[USERID_KEY] = userId
+            preferences[TOKEN_KEY] = userToken
         }
     }
 
-    fun getSession(): Flow<UserModel> {
+    fun getUser(): Flow<SignInResult> {
         return dataStore.data.map { preferences ->
-            UserModel(
-                preferences[EMAIL_KEY] ?: "",
-                preferences[TOKEN_KEY] ?: "",
-                preferences[IS_LOGIN_KEY] ?: false
+            SignInResult(
+                preferences[NAME_KEY] ?:"",
+                preferences[USERID_KEY] ?:"",
+                preferences[TOKEN_KEY] ?:"",
             )
         }
     }
 
-    suspend fun logout() {
+    suspend fun signout() {
         dataStore.edit { preferences ->
-            preferences.clear()
+            preferences[NAME_KEY] = ""
+            preferences[USERID_KEY] = ""
+            preferences[TOKEN_KEY] = ""
         }
     }
 
@@ -42,9 +47,9 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         @Volatile
         private var INSTANCE: UserPreference? = null
 
-        private val EMAIL_KEY = stringPreferencesKey("email")
+        private val NAME_KEY = stringPreferencesKey("name")
+        private val USERID_KEY = stringPreferencesKey("userId")
         private val TOKEN_KEY = stringPreferencesKey("token")
-        private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {

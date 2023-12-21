@@ -1,4 +1,4 @@
-package com.dicoding.mybatikfinder
+package com.dicoding.mybatikfinder.view.fragment
 
 import androidx.fragment.app.Fragment
 
